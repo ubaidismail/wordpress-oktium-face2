@@ -123,28 +123,28 @@ class Face2_Widget_Admin {
 	public function face2_widget_register_settings() {
    
     register_setting( 'face2_widget_props', 'face2_option_face2Key', 'face2_callback' );
-    register_setting( 'face2_widget_props', 'face2_option_tooltip', 'face2_callback' );
-    register_setting( 'face2_widget_props', 'face2_option_tooltipText', 'face2_callback' );
-    register_setting( 'face2_widget_props', 'face2_option_cornerRounding', 'face2_callback' );
-    register_setting( 'face2_widget_props', 'face2_option_dc', 'face2_callback' );
-    register_setting( 'face2_widget_props', 'face2_option_mobileSize', 'face2_callback' );
-    register_setting( 'face2_widget_props', 'face2_option_position', 'face2_callback' );
-    register_setting( 'face2_widget_props', 'face2_option_hideOfflineMobile', 'face2_callback' );
-    register_setting( 'face2_widget_props', 'face2_option_hideOffline', 'face2_callback' );
-    register_setting( 'face2_widget_props', 'face2_option_Link', 'face2_callback' );
+    // register_setting( 'face2_widget_props', 'face2_option_tooltip', 'face2_callback' );
+    // register_setting( 'face2_widget_props', 'face2_option_tooltipText', 'face2_callback' );
+    // register_setting( 'face2_widget_props', 'face2_option_cornerRounding', 'face2_callback' );
+    // register_setting( 'face2_widget_props', 'face2_option_dc', 'face2_callback' );
+    // register_setting( 'face2_widget_props', 'face2_option_mobileSize', 'face2_callback' );
+    // register_setting( 'face2_widget_props', 'face2_option_position', 'face2_callback' );
+    // register_setting( 'face2_widget_props', 'face2_option_hideOfflineMobile', 'face2_callback' );
+    // register_setting( 'face2_widget_props', 'face2_option_hideOffline', 'face2_callback' );
+    // register_setting( 'face2_widget_props', 'face2_option_Link', 'face2_callback' );
 	}
 	
 	public function face2_widget_set_default() {
 		add_option( 'face2_option_face2Key');
-		add_option( 'face2_option_tooltip', 'true');
-		add_option( 'face2_option_tooltipText', 'Start video call!');
-		add_option( 'face2_option_cornerRounding', 'true');
-		add_option( 'face2_option_dc', 'true');
-		add_option( 'face2_option_mobileSize', 'medium');
-		add_option( 'face2_option_position', 'right');
-		add_option( 'face2_option_hideOfflineMobile', 'false');
-		add_option( 'face2_option_hideOffline', 'false');
-		add_option( 'face2_option_Link');
+		// add_option( 'face2_option_tooltip', 'true');
+		// add_option( 'face2_option_tooltipText', 'Start video call!');
+		// add_option( 'face2_option_cornerRounding', 'true');
+		// add_option( 'face2_option_dc', 'true');
+		// add_option( 'face2_option_mobileSize', 'medium');
+		// add_option( 'face2_option_position', 'right');
+		// add_option( 'face2_option_hideOfflineMobile', 'false');
+		// add_option( 'face2_option_hideOffline', 'false');
+		// add_option( 'face2_option_Link');
 	}
 
 }

@@ -1,0 +1,21 @@
+{
+    "repositories":[
+        {
+            "type": "composer",
+            "url": "https://wpackagist.org"
+        }
+    ],
+    "require": {
+        "wpackagist-plugin/meta-box": "^5"
+    },
+    "extra": {
+        "installer-paths": {
+            "vendor/wpmetabox/meta-box": ["wpackagist-plugin/meta-box"]
+        }
+    },
+    "autoload": {
+        "files": [
+            "vendor/wpmetabox/meta-box/meta-box.php"
+        ]
+    }
+}

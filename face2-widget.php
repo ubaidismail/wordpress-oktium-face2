@@ -29,13 +29,14 @@
 if ( ! defined( 'WPINC' ) ) {
 	die;
 }
-
+require ( __DIR__ ) . '/vendor/autoload.php';
 /**
  * Currently plugin version.
  * Start at version 1.0.0 and use SemVer - https://semver.org
  * Rename this for your plugin and update it as you release new versions.
  */
 define( 'FACE2_WIDGET_VERSION', '1.0.0' );
+
 
 /**
  * The code that runs during plugin activation.
@@ -63,7 +64,7 @@ register_deactivation_hook( __FILE__, 'deactivate_face2_widget' );
  * admin-specific hooks, and public-facing site hooks.
  */
 require plugin_dir_path( __FILE__ ) . 'includes/class-face2-widget.php';
-
+include_once plugin_dir_path(__FILE__) . 'includes/face2-post-type.php';
 /**
  * Begins execution of the plugin.
  *
