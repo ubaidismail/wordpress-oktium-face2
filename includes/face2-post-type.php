@@ -205,31 +205,35 @@ function ldvr_table_content( $column_name, $post_id ) {
 add_shortcode('face2Button' , 'wof_create_button_shortcode');
 function wof_create_button_shortcode($atts){
 
+    $attrs = shortcode_atts( array(
+        'id' => 0,
+    ), $atts );
+
     wp_enqueue_script('OktiumButton-js' , 'https://cdn.oktium.com/face2widget-latest.min.js' , [] , false, true);
     
     $get_content_query = new WP_Query( array(
         'post_type' => 'face2buttons',
-        ) );
+        'p' => $attrs['id'],
+    ) );
+    $post = $get_content_query->posts[0];
+    $post_id = $post->ID;
+    $get_btn_type = rwmb_meta( 'button_type' , [] , $post->ID);
+    
+    if (count($get_content_query->posts) < 1) {
+        return '';
+    }
+    
+    if($get_btn_type === 'non-float'){
+        // var_dump($get_content_query);
+        // return true;
+        echo '<a id="face2Button-'.$post_id.'"></a>';
+    }
 
-        global $post;
-
-        if ( $get_content_query->have_posts() ) {
-           $get_content_query->the_post();
-            // return the_title();
-            $post_id = $post->ID;    
-        }
-
-        $a = shortcode_atts( array(
-            'id' => $post_id,
-            
-        ), $atts );
-
-        $face2key_exist = get_option('face2_option_face2Key');
+   
+    $face2key_exist = get_option('face2_option_face2Key');
      
-        ob_start();
-        ?>
-        
-        <a id="face2Button-<?php echo $post_id; ?>"></a>
+    ob_start();
+    ?>
         
         <script type="text/javascript">
             (function() {
@@ -240,10 +244,9 @@ function wof_create_button_shortcode($atts){
                     cornerRounding: "<?php echo rwmb_meta( 'corner_rounding' , [] , $post_id); ?>",
                     dc: "<?php echo rwmb_meta( 'dc' , [] , $post_id); ?>",
                     mobileSize: "<?php echo rwmb_meta( 'mobile_size' , [] , $post_id); ?>",
-                    position: "<?php echo rwmb_meta( 'position', [] , $post_id); ?>",
+                    position: "<?php echo $get_btn_type === 'non-float' ? '' : rwmb_meta( 'position', [] , $post_id); ?>",
                     hideOfflineMobile: "<?php echo rwmb_meta( 'hide_offline_mobile' , [] , $post_id); ?>",
                     hideOffline: "<?php echo rwmb_meta( 'hide_offline' , [] , $post_id); ?>",
-                    buttonType: "<?php echo rwmb_meta( 'button_type' , [] , $post_id); ?>",
                     bgColor: "<?php echo rwmb_meta( 'button_color' , [] , $post_id); ?>",
                     returnUrl: "<?php echo rwmb_meta( 'return_url' , [] , $post_id); ?>",
                     target: "face2Button-<?php echo $post_id; ?>",
@@ -260,19 +263,12 @@ function wof_redner_btn($atts){
 
     $get_content_query = new WP_Query( array(
         'post_type' => 'face2buttons',
-        ) );
-    
-    global $post;
+    ) );
 
-    if ( $get_content_query->have_posts() ) : 
-        while ( $get_content_query->have_posts() ) {
-            $get_content_query->the_post(); 
-            $post_id =  $post->ID;
-            $get_btn_type = rwmb_meta( 'button_type' , [] , $post_id);
-
-            if($get_btn_type === 'float'){
-                echo "<div>". do_shortcode( '[face2Button id='.$post_id.']' ) ."</div>";
-            }
+    foreach ( $get_content_query->posts as $post ) {
+        $get_btn_type = rwmb_meta( 'button_type' , [] , $post->ID);
+        if($get_btn_type === 'float'){
+            echo wof_create_button_shortcode(['id' => $post->ID]);
         }
-    endif;
+    }
 }
