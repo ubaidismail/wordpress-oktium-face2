@@ -4,6 +4,12 @@ function wof_create_post_type(){
     $label = [
         'name'          => 'Face2 Buttons',
         'singular_name' => 'Face2 Button',
+        'all_items'           => __( 'All Button', 'twentytwenty' ),
+        'view_item'           => __( 'View Button', 'twentytwenty' ),
+        'add_new_item'        => __( 'Add New Button', 'twentytwenty' ),
+        'add_new'             => __( 'Add New', 'twentytwenty' ),
+        'edit_item'           => __( 'Edit Button', 'twentytwenty' ),
+        'update_item'         => __( 'Update Button', 'twentytwenty' ),
     ];
 
     $args = [
@@ -215,20 +221,21 @@ function wof_create_button_shortcode($atts){
         'post_type' => 'face2buttons',
         'p' => $attrs['id'],
     ) );
-    $post = $get_content_query->posts[0];
-    $post_id = $post->ID;
-    $get_btn_type = rwmb_meta( 'button_type' , [] , $post->ID);
+    // error_reporting();
     
     if (count($get_content_query->posts) < 1) {
         return '';
     }
     
+    
+    $post = $get_content_query->posts[0];
+    $post_id = $post->ID;
+    $get_btn_type = rwmb_meta( 'button_type' , [] , $post->ID);
+    
     if($get_btn_type === 'non-float'){
-        // var_dump($get_content_query);
-        // return true;
         echo '<a id="face2Button-'.$post_id.'"></a>';
     }
-
+                                                                
    
     $face2key_exist = get_option('face2_option_face2Key');
      
@@ -268,6 +275,7 @@ function wof_redner_btn($atts){
     foreach ( $get_content_query->posts as $post ) {
         $get_btn_type = rwmb_meta( 'button_type' , [] , $post->ID);
         if($get_btn_type === 'float'){
+            // echo $post->ID;
             echo wof_create_button_shortcode(['id' => $post->ID]);
         }
     }
