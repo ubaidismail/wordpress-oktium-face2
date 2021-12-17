@@ -17,7 +17,7 @@
  * Plugin URI:        https://kb.oktium.com/
  * Description:       This is a plugin for implementing Face2 button as floating widget.
  * Version:           1.0.0
- * Author:            iShopping inc.
+ * Author:            oktium, qfnetwork, ubaid, rahilwazir
  * Author URI:        https://kb.oktium.com/
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
