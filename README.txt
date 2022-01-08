@@ -19,6 +19,9 @@ To make the buttons more personalised, our plugin gives you the option to config
 
 **Note:** We are using our Oktium Face2 service to include updated CDN script to your website which is required to display the product and floating buttons.
 
+Website: https://oktium.com/
+Terms of Use: https://oktium.com/terms
+
 **Requirements**
 
 * PHP 7.0+
