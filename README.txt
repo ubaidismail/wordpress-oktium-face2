@@ -9,11 +9,15 @@ Stable tag: 1.0.0
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-In-Store video call experience for your online customers
+Provide in-store like experience to your online customers
 
 == Description ==
 
-Live. Personal. Online.  Oktium is an instant live video connection for online customers to real salespeople and service providers at brick-and-mortar locations.
+Live. Personal. Online. Oktium is an instant live video connection for online customers to real salespeople and service providers at brick-and-mortar locations.
+
+To make the buttons more personalised, our plugin gives you the option to configure buttons and display them individually to improve user experience.
+
+**Note:** We are using our Oktium Face2 service to include updated CDN script to your website which is required to display the product and floating buttons.
 
 **Requirements**
 

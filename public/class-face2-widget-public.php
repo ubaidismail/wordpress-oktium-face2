@@ -101,7 +101,6 @@ class Face2_Widget_Public {
 	}
 	
 	public function show_widget(){ 
-		require_once 'partials/face2-widget-public-display.php';
+		// require_once 'partials/face2-widget-public-display.php';
 	}
-
 }

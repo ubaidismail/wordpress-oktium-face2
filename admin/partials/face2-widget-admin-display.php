@@ -22,7 +22,7 @@
   <table style="width: 100%;  max-width: 500px;">
   <tr valign="top">
   <th scope="row"><label for="face2_option_face2Key">Face2 Key</label></th>
-  <td><input type="text" id="face2_option_face2Key" name="face2_option_face2Key" value="<?php echo get_option('face2_option_face2Key'); ?>" style="width: 100% " />
+  <td><input type="text" id="face2_option_face2Key" name="face2_option_face2Key" value="<?php echo esc_attr(get_option('face2_option_face2Key')); ?>" style="width: 100% " />
     <p class="description" id="tagline-description">Insert your Face2 key, which you received with the Wordpress plugin</p>
   </td>
   </tr>

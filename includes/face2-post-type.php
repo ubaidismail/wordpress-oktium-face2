@@ -197,14 +197,12 @@ function ldvr_table_content( $column_name, $post_id ) {
             foreach( $face_query->posts as $face2btn ) {
                 $current_id = $post->ID;
                 if ( get_the_title( $face2btn ) == get_the_title( $current_id ) ) {
-                    echo "<code>[face2Button id=". $current_id ."]</code>";
-                }         
-    
+                    echo "<code>[face2Button id=". esc_attr($current_id) ."]</code>";
+                }
             }
         }
     }
 }
-
 
 // creating shortcode
 
@@ -215,13 +213,12 @@ function wof_create_button_shortcode($atts){
         'id' => 0,
     ), $atts );
 
-    wp_enqueue_script('OktiumButton-js' , 'https://cdn.oktium.com/face2widget-latest.min.js' , [] , false, true);
-    
+    wp_enqueue_script('OktiumButton' , 'https://cdn.oktium.com/face2widget-latest.min.js' , [] , false, true);
+
     $get_content_query = new WP_Query( array(
         'post_type' => 'face2buttons',
         'p' => $attrs['id'],
     ) );
-    // error_reporting();
     
     if (count($get_content_query->posts) < 1) {
         return '';
@@ -232,40 +229,40 @@ function wof_create_button_shortcode($atts){
     $post_id = $post->ID;
     $get_btn_type = rwmb_meta( 'button_type' , [] , $post->ID);
     
-    if($get_btn_type === 'non-float'){
-        echo '<a id="face2Button-'.$post_id.'"></a>';
+    if($get_btn_type === 'non-float') {
+        echo '<a id="face2Button-'.esc_attr($post_id).'"></a>';
     }
-                                                                
-   
+
     $face2key_exist = get_option('face2_option_face2Key');
-     
+
     ob_start();
     ?>
-        
         <script type="text/javascript">
-            (function() {
+            window.addEventListener('load', function() {
+                if (!window.Oktium) return;
+
                 new window.Oktium({
-                    face2Key: "<?php echo (rwmb_meta( 'face2_key' , [] , $post_id))? : $face2key_exist; ?>",
-                    tooltip: "<?php echo rwmb_meta( 'tooltip' , [] , $post_id); ?>",
-                    tooltipText: "<?php echo rwmb_meta( 'tooltip_text' , [] , $post_id); ?>",
-                    cornerRounding: "<?php echo rwmb_meta( 'corner_rounding' , [] , $post_id); ?>",
-                    dc: "<?php echo rwmb_meta( 'dc' , [] , $post_id); ?>",
-                    mobileSize: "<?php echo rwmb_meta( 'mobile_size' , [] , $post_id); ?>",
-                    position: "<?php echo $get_btn_type === 'non-float' ? '' : rwmb_meta( 'position', [] , $post_id); ?>",
-                    hideOfflineMobile: "<?php echo rwmb_meta( 'hide_offline_mobile' , [] , $post_id); ?>",
-                    hideOffline: "<?php echo rwmb_meta( 'hide_offline' , [] , $post_id); ?>",
-                    bgColor: "<?php echo rwmb_meta( 'button_color' , [] , $post_id); ?>",
-                    returnUrl: "<?php echo rwmb_meta( 'return_url' , [] , $post_id); ?>",
-                    target: "face2Button-<?php echo $post_id; ?>",
+                    face2Key: "<?php echo rwmb_meta( 'face2_key' , [] , $post_id)? : esc_html($face2key_exist); ?>",
+                    tooltip: "<?php echo rwmb_meta( 'tooltip' , [] , esc_html($post_id)); ?>",
+                    tooltipText: "<?php echo rwmb_meta( 'tooltip_text' , [] , esc_html($post_id)); ?>",
+                    cornerRounding: "<?php echo rwmb_meta( 'corner_rounding' , [] , esc_html($post_id)); ?>",
+                    dc: "<?php echo rwmb_meta( 'dc' , [] , esc_html($post_id)); ?>",
+                    mobileSize: "<?php echo rwmb_meta( 'mobile_size' , [] , esc_html($post_id)); ?>",
+                    position: "<?php echo $get_btn_type === 'non-float' ? '' : rwmb_meta( 'position', [] , esc_html($post_id)); ?>",
+                    hideOfflineMobile: "<?php echo rwmb_meta( 'hide_offline_mobile' , [] , esc_html($post_id)); ?>",
+                    hideOffline: "<?php echo rwmb_meta( 'hide_offline' , [] , esc_html($post_id)); ?>",
+                    bgColor: "<?php echo rwmb_meta( 'button_color' , [] , esc_html($post_id)); ?>",
+                    returnUrl: "<?php echo rwmb_meta( 'return_url' , [] , esc_html($post_id)); ?>",
+                    target: "face2Button-<?php echo esc_attr($post_id); ?>",
                 }).init();
-            })();
+            }, false);
         </script>
     <?php
     return ob_get_clean();
 }
 
 // enqueue content in footer
-add_action( 'wp_footer' , 'wof_redner_btn');
+add_action( 'wp_head' , 'wof_redner_btn', 999 );
 function wof_redner_btn($atts){
 
     $get_content_query = new WP_Query( array(
@@ -275,8 +272,8 @@ function wof_redner_btn($atts){
     foreach ( $get_content_query->posts as $post ) {
         $get_btn_type = rwmb_meta( 'button_type' , [] , $post->ID);
         if($get_btn_type === 'float'){
-            // echo $post->ID;
-            echo wof_create_button_shortcode(['id' => $post->ID]);
+            $create_btn_short = wof_create_button_shortcode(['id' => $post->ID]);
+            echo $create_btn_short;
         }
     }
 }
