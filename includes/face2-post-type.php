@@ -196,8 +196,9 @@ function ldvr_table_content( $column_name, $post_id ) {
                  
             foreach( $face_query->posts as $face2btn ) {
                 $current_id = $post->ID;
-                if ( get_the_title( $face2btn ) == get_the_title( $current_id ) ) {
-                    echo "<code>[face2Button id=". esc_attr($current_id) ."]</code>";
+                $get_btn_type = rwmb_meta( 'button_type' , [] , $current_id);
+                if ( get_the_title( $face2btn ) == get_the_title( $current_id && $get_btn_type !== 'non-float' ) ) {
+                    echo "<code>[face2Button id='". esc_attr($current_id) ."']</code>";
                 }
             }
         }
@@ -223,7 +224,6 @@ function wof_create_button_shortcode($atts){
     if (count($get_content_query->posts) < 1) {
         return '';
     }
-    
     
     $post = $get_content_query->posts[0];
     $post_id = $post->ID;
@@ -272,8 +272,7 @@ function wof_redner_btn($atts){
     foreach ( $get_content_query->posts as $post ) {
         $get_btn_type = rwmb_meta( 'button_type' , [] , $post->ID);
         if($get_btn_type === 'float'){
-            $create_btn_short = wof_create_button_shortcode(['id' => $post->ID]);
-            echo $create_btn_short;
+            echo wof_create_button_shortcode(['id' => $post->ID]);
         }
     }
 }
