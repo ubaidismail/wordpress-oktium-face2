@@ -1,9 +1,9 @@
 === Oktium Face2 ===
-Contributors: oktium, qfnetwork, ubaid, rahilwazir
+Contributors: oktium
 Donate link: https://oktium.com/
 Tags: button, oktium button, widget, product, video, call, woocommerce
 Requires at least: 5.0
-Tested up to: 5.8.2
+Tested up to: 5.8.3
 Requires PHP: 7.0
 Stable tag: 1.0.0
 License: GPLv3

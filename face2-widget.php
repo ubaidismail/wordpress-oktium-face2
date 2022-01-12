@@ -17,7 +17,7 @@
  * Plugin URI:        https://oktium.zendesk.com/hc/en-us/articles/360023346574-Face2-Wordpress-plugin
  * Description:       This is a plugin for implementing Face2 button as floating widget.
  * Version:           1.0.0
- * Author:            oktium, qfnetwork, ubaid, rahilwazir
+ * Author:            oktium
  * Author URI:        https://oktium.com/
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
