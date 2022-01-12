@@ -52,3 +52,8 @@ You can view the documentation [here](https://docs.google.com/document/d/14Ics2_
 If you get stuck, you can ask for help in the [Plugin Forum](https://oktium.zendesk.com/hc/en-us) or reach out us at [support@oktium.com](mailto:support@oktium.com)
 
 == Screenshots ==
+
+1. Plugin settings
+2. Face2 button listing
+3. Float button frontend
+4. Edit button
