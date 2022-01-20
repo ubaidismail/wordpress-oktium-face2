@@ -51,10 +51,38 @@ function wof_register_meta_boxes( $meta_boxes ) {
         'fields'  => [
             [
                 'type' => 'text',
-                'name' => esc_html__( 'Face2 Key	', 'online-generator' ),
-                'id'   => $prefix . 'face2_key',
-                'desc' => esc_html__( 'Insert your Face2 key, which you received with the Wordpress plugin', 'online-generator' ),
+                'name' => esc_html__( 'Name', 'online-generator' ),
+                'id'   => $prefix . 'product_name',
+                'desc' => esc_html__( 'Insert your Product Name,' ),
             ],
+            
+            [
+                'type'    => 'select',
+                'name'    => esc_html__( 'Button Type', 'online-generator' ),
+                'id'      => $prefix . 'button_type',
+                'desc' => esc_html__( '', 'online-generator' ),
+                'options' => [
+                    'non-float'       => esc_html__( 'Non-floating button', 'online-generator' ),
+                    'float' => esc_html__( 'Product Detail', 'online-generator' ),
+                ],
+            ],
+            [
+                'type'    => 'select',
+                'name'    => esc_html__( 'Position', 'online-generator' ),
+                'id'      => $prefix . 'position',
+                'desc'    => esc_html__( 'Position of the Face2 button on your website', 'online-generator' ),
+                'options' => [
+                    'right' => esc_html__( 'Right', 'online-generator' ),
+                    'left'  => esc_html__( 'Left', 'online-generator' ),
+                ],
+                'std'     => 'right',
+            ],
+            [
+                'type' => 'color',
+                'name' => esc_html__( 'Button color', 'online-generator' ),
+                'id'   => $prefix . 'button_color',
+            ],
+           
             [
                 'type'    => 'select',
                 'name'    => esc_html__( 'Tooltip', 'online-generator' ),
@@ -107,17 +135,7 @@ function wof_register_meta_boxes( $meta_boxes ) {
                 ],
                 'std'     => 'medium',
             ],
-            [
-                'type'    => 'select',
-                'name'    => esc_html__( 'Position', 'online-generator' ),
-                'id'      => $prefix . 'position',
-                'desc'    => esc_html__( 'Position of the Face2 button on your website', 'online-generator' ),
-                'options' => [
-                    'right' => esc_html__( 'Right', 'online-generator' ),
-                    'left'  => esc_html__( 'Left', 'online-generator' ),
-                ],
-                'std'     => 'right',
-            ],
+           
             [
                 'type'    => 'select',
                 'name'    => esc_html__( 'Hide Offline Mobile', 'online-generator' ),
@@ -144,26 +162,25 @@ function wof_register_meta_boxes( $meta_boxes ) {
                 'type'    => 'select',
                 'name'    => esc_html__( 'Return Url', 'online-generator' ),
                 'id'      => $prefix . 'return_url',
-                // 'desc'    => esc_html__( 'Hide the Face2 button on web, while not available', 'online-generator' ),
+                'desc'    => esc_html__( 'Retur to page after call', 'online-generator' ),
                 'options' => [
                     'true'  => esc_html__( 'True', 'online-generator' ),
                     'false' => esc_html__( 'False', 'online-generator' ),
                 ],
                 'std'     => 'false',
             ],
+
             [
-                'type'    => 'select',
-                'name'    => esc_html__( 'Button Type', 'online-generator' ),
-                'id'      => $prefix . 'button_type',
-                'options' => [
-                    'float' => esc_html__( 'Floating button', 'online-generator' ),
-                    'non-float'       => esc_html__( 'Non-floating button', 'online-generator' ),
-                ],
+                'type' => 'textarea',
+                'name' => esc_html__( 'Meta', 'online-generator' ),
+                'id'   => $prefix . 'meta',
+                'desc' => esc_html__( 'Insert parameters you want to collect | Javascript object', 'online-generator' ),
             ],
             [
-                'type' => 'color',
-                'name' => esc_html__( 'Button color', 'online-generator' ),
-                'id'   => $prefix . 'button_color',
+                'type' => 'text',
+                'name' => esc_html__( 'Face2 Key	', 'online-generator' ),
+                'id'   => $prefix . 'face2_key',
+                'desc' => esc_html__( 'Insert your Face2 key, which you received with the Wordpress plugin', 'online-generator' ),
             ],
         ],
     ];
@@ -234,7 +251,16 @@ function wof_create_button_shortcode($atts){
     }
 
     $face2key_exist = get_option('face2_option_face2Key');
-
+    $product_name = rwmb_meta( 'product_name' , [] , esc_html($post_id));
+    $tooltip = rwmb_meta( 'tooltip' , [] , esc_html($post_id));
+    $text_tooltip = rwmb_meta( 'tooltip_text' , [] , esc_html($post_id));
+    $corner_round = rwmb_meta( 'corner_rounding' , [] , esc_html($post_id));
+    $hide_offline =  rwmb_meta( 'hide_offline' , [] , esc_html($post_id));
+    $face2 =  rwmb_meta( 'face2_key' , [] , $post_id)? : esc_html($face2key_exist);
+    $offline_mobile =  rwmb_meta( 'hide_offline_mobile' , [] , esc_html($post_id));
+    $mobile_size =  rwmb_meta( 'mobile_size' , [] , esc_html($post_id));
+    $return_url = rwmb_meta( 'return_url' , [] , esc_html($post_id));
+    $meta = rwmb_meta( 'meta' , [] , esc_html($post_id));
     ob_start();
     ?>
         <script type="text/javascript">
@@ -242,17 +268,33 @@ function wof_create_button_shortcode($atts){
                 if (!window.Oktium) return;
 
                 new window.Oktium({
-                    face2Key: "<?php echo rwmb_meta( 'face2_key' , [] , $post_id)? : esc_html($face2key_exist); ?>",
-                    tooltip: "<?php echo rwmb_meta( 'tooltip' , [] , esc_html($post_id)); ?>",
-                    tooltipText: "<?php echo rwmb_meta( 'tooltip_text' , [] , esc_html($post_id)); ?>",
-                    cornerRounding: "<?php echo rwmb_meta( 'corner_rounding' , [] , esc_html($post_id)); ?>",
+                    
+                    face2Key: "<?php if($hide_offline == "false" && $offline_mobile == "false"){echo $face2;} ?>",
+                    
+                    productName: "<?php echo $product_name; ?>",
+
+                    tooltip: "<?php echo ($tooltip == "true")? $tooltip : '' ?>",
+
+                    tooltipText: "<?php  echo ($tooltip == "true")? $text_tooltip : ''; ?>",
+                    
+                    cornerRounding: <?php echo ($corner_round == 'true') ? 'true' : 'false'; ?>,
+                    
                     dc: "<?php echo rwmb_meta( 'dc' , [] , esc_html($post_id)); ?>",
-                    mobileSize: "<?php echo rwmb_meta( 'mobile_size' , [] , esc_html($post_id)); ?>",
+                    
+                    mobileSize: "<?php ($mobile_size == "small" || $mobile_size == "large")? $mobile_size : 'medium' ?>",
+                    
                     position: "<?php echo $get_btn_type === 'non-float' ? '' : rwmb_meta( 'position', [] , esc_html($post_id)); ?>",
-                    hideOfflineMobile: "<?php echo rwmb_meta( 'hide_offline_mobile' , [] , esc_html($post_id)); ?>",
-                    hideOffline: "<?php echo rwmb_meta( 'hide_offline' , [] , esc_html($post_id)); ?>",
+                    
+                    hideOfflineMobile: "<?php echo ($offline_mobile == "false")? $offline_mobile: ''; ?>",
+                    
+                    hideOffline: "<?php if($hide_offline == "false"){echo $hide_offline;} ?>",
+                    
                     bgColor: "<?php echo rwmb_meta( 'button_color' , [] , esc_html($post_id)); ?>",
-                    returnUrl: "<?php echo rwmb_meta( 'return_url' , [] , esc_html($post_id)); ?>",
+                    
+                    returnUrl: "<?php echo ($return_url == "true")? $return_url : ''  ?>",
+                    
+                    meta: "<?php echo (!empty($meta))? json_decode($meta) : ''  ?>",
+                    
                     target: "face2Button-<?php echo esc_attr($post_id); ?>",
                 }).init();
             }, false);
