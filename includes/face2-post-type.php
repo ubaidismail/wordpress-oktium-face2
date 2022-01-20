@@ -261,6 +261,7 @@ function wof_create_button_shortcode($atts){
     $mobile_size =  rwmb_meta( 'mobile_size' , [] , esc_html($post_id));
     $return_url = rwmb_meta( 'return_url' , [] , esc_html($post_id));
     $meta = rwmb_meta( 'meta' , [] , esc_html($post_id));
+
     ob_start();
     ?>
         <script type="text/javascript">
@@ -293,7 +294,7 @@ function wof_create_button_shortcode($atts){
                     
                     returnUrl: "<?php echo ($return_url == "true")? $return_url : ''  ?>",
                     
-                    meta: "<?php echo (!empty($meta))? json_decode($meta) : ''  ?>",
+                    meta: <?php json_decode($meta); echo (json_last_error() === JSON_ERROR_NONE) ? $meta : '';  ?>,
                     
                     target: "face2Button-<?php echo esc_attr($post_id); ?>",
                 }).init();
