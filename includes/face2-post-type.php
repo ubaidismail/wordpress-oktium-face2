@@ -123,18 +123,7 @@ function wof_register_meta_boxes( $meta_boxes ) {
                 ],
                 'std'     => 'true',
             ],
-            [
-                'type'    => 'select',
-                'name'    => esc_html__( 'Mobile Size', 'online-generator' ),
-                'id'      => $prefix . 'mobile_size',
-                'desc'    => esc_html__( 'Size of the Face2 button in mobile devices', 'online-generator' ),
-                'options' => [
-                    'small'  => esc_html__( 'Small', 'online-generator' ),
-                    'medium' => esc_html__( 'Medium', 'online-generator' ),
-                    'large'  => esc_html__( 'Large', 'online-generator' ),
-                ],
-                'std'     => 'medium',
-            ],
+           
            
             [
                 'type'    => 'select',
@@ -258,7 +247,6 @@ function wof_create_button_shortcode($atts){
     $hide_offline =  rwmb_meta( 'hide_offline' , [] , esc_html($post_id));
     $face2 =  rwmb_meta( 'face2_key' , [] , $post_id)? : esc_html($face2key_exist);
     $offline_mobile =  rwmb_meta( 'hide_offline_mobile' , [] , esc_html($post_id));
-    $mobile_size =  rwmb_meta( 'mobile_size' , [] , esc_html($post_id));
     $return_url = rwmb_meta( 'return_url' , [] , esc_html($post_id));
     $meta = rwmb_meta( 'meta' , [] , esc_html($post_id));
 
@@ -282,8 +270,6 @@ function wof_create_button_shortcode($atts){
                     
                     dc: "<?php echo rwmb_meta( 'dc' , [] , esc_html($post_id)); ?>",
                     
-                    mobileSize: "<?php ($mobile_size == "small" || $mobile_size == "large")? $mobile_size : 'medium' ?>",
-                    
                     position: "<?php echo $get_btn_type === 'non-float' ? '' : rwmb_meta( 'position', [] , esc_html($post_id)); ?>",
                     
                     hideOfflineMobile: "<?php echo ($offline_mobile == "false")? $offline_mobile: ''; ?>",
@@ -294,7 +280,7 @@ function wof_create_button_shortcode($atts){
                     
                     returnUrl: "<?php echo ($return_url == "true")? $return_url : ''  ?>",
                     
-                    meta: <?php json_decode($meta); echo (json_last_error() === JSON_ERROR_NONE) ? $meta : '';  ?>,
+                    meta: "<?php json_decode($meta); echo (json_last_error() === JSON_ERROR_NONE) ? $meta : '';  ?>",
                     
                     target: "face2Button-<?php echo esc_attr($post_id); ?>",
                 }).init();
