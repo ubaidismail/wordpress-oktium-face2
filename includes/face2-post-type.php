@@ -62,8 +62,8 @@ function wof_register_meta_boxes( $meta_boxes ) {
                 'id'      => $prefix . 'button_type',
                 'desc' => esc_html__( '', 'online-generator' ),
                 'options' => [
-                    'non-float'       => esc_html__( 'Non-floating button', 'online-generator' ),
-                    'float' => esc_html__( 'Product Detail', 'online-generator' ),
+                    'non-float'       => esc_html__( 'Product Detail', 'online-generator' ),
+                    'float' => esc_html__( 'Floating Button', 'online-generator' ),
                 ],
             ],
             [
