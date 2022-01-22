@@ -280,7 +280,7 @@ function wof_create_button_shortcode($atts){
                     
                     returnUrl: "<?php echo ($return_url == "true")? $return_url : ''  ?>",
                     
-                    meta: "<?php json_decode($meta); echo (json_last_error() === JSON_ERROR_NONE) ? $meta : '';  ?>",
+                    meta: <?php json_decode($meta); echo (json_last_error() === JSON_ERROR_NONE) ? $meta : '""';  ?>,
                     
                     target: "face2Button-<?php echo esc_attr($post_id); ?>",
                 }).init();
