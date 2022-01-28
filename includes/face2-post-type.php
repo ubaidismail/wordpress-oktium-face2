@@ -49,12 +49,7 @@ function wof_register_meta_boxes( $meta_boxes ) {
         'post_types' => 'face2buttons',
         'context' => 'normal',
         'fields'  => [
-            [
-                'type' => 'text',
-                'name' => esc_html__( 'Name', 'online-generator' ),
-                'id'   => $prefix . 'product_name',
-                'desc' => esc_html__( 'Insert your Product Name,' ),
-            ],
+           
             
             [
                 'type'    => 'select',
@@ -82,7 +77,12 @@ function wof_register_meta_boxes( $meta_boxes ) {
                 'name' => esc_html__( 'Button color', 'online-generator' ),
                 'id'   => $prefix . 'button_color',
             ],
-           
+            [
+                'type' => 'text',
+                'name' => esc_html__( 'Product Name', 'online-generator' ),
+                'id'   => $prefix . 'product_name',
+                'desc' => esc_html__( 'Insert your Product Name,' ),
+            ],
             [
                 'type'    => 'select',
                 'name'    => esc_html__( 'Tooltip', 'online-generator' ),
