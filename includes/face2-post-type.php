@@ -37,10 +37,13 @@ function wof_create_post_type(){
     register_post_type( 'face2buttons', $args );
 }
 add_action( 'init', 'wof_create_post_type' );
-///
-add_filter( 'rwmb_meta_boxes', 'wof_register_meta_boxes' );
 
-function wof_register_meta_boxes( $meta_boxes ) {
+add_filter( 'rwmb_meta_boxes', 'ldvr_register_meta_boxes' );
+
+function ldvr_register_meta_boxes( $meta_boxes ) {
+
+    
+      
     $prefix = '';
 
     $meta_boxes[] = [
@@ -50,7 +53,6 @@ function wof_register_meta_boxes( $meta_boxes ) {
         'context' => 'normal',
         'fields'  => [
            
-            
             [
                 'type'    => 'select',
                 'name'    => esc_html__( 'Button Type', 'online-generator' ),
@@ -304,4 +306,26 @@ function wof_redner_btn($atts){
             echo wof_create_button_shortcode(['id' => $post->ID]);
         }
     }
+}
+
+function ldvr_admin_enqueue() {
+	// Only add to the edit.php admin page.
+	// See WP docs.
+
+	wp_enqueue_script('ldvr-custom-admin-js', plugin_dir_url( __DIR__) . 'public/js/custom-admin.js' , array('jquery'), false, true);
+}
+add_action('admin_enqueue_scripts', 'ldvr_admin_enqueue');
+
+add_action("admin_init", "ldvr_btn_shortcode_on_post_eddit_screen");
+   
+function ldvr_btn_shortcode_on_post_eddit_screen(){
+    add_meta_box("side_shortcode", "Button Shortcode", "ldvr_display_side_shortcode", "face2buttons", "side", "high");
+}
+function ldvr_display_side_shortcode(){
+    $cure_id = get_the_ID();
+    $get_btn_type = rwmb_meta( 'button_type' , [] , $cure_id);
+    if($get_btn_type == 'float'){
+        return;
+    }
+     echo "<code>[face2Button id='". esc_attr($cure_id) ."']</code>";
 }
