@@ -52,6 +52,12 @@ function ldvr_register_meta_boxes( $meta_boxes ) {
         'post_types' => 'face2buttons',
         'context' => 'normal',
         'fields'  => [
+            [
+                'type' => 'text',
+                'name' => esc_html__( 'Face2 Key	', 'online-generator' ),
+                'id'   => $prefix . 'face2_key',
+                'desc' => esc_html__( 'Insert your Face2 key, which you received with the Wordpress plugin', 'online-generator' ),
+            ],
            
             [
                 'type'    => 'select',
@@ -60,12 +66,13 @@ function ldvr_register_meta_boxes( $meta_boxes ) {
                 'desc' => esc_html__( '', 'online-generator' ),
                 'options' => [
                     'non-float'       => esc_html__( 'Product Detail', 'online-generator' ),
-                    'float' => esc_html__( 'Floating Button', 'online-generator' ),
+                    'float' => esc_html__( 'Floating', 'online-generator' ),
                 ],
             ],
+
             [
                 'type'    => 'select',
-                'name'    => esc_html__( 'Position', 'online-generator' ),
+                'name'    => esc_html__( 'Button Position', 'online-generator' ),
                 'id'      => $prefix . 'position',
                 'desc'    => esc_html__( 'Position of the Face2 button on your website', 'online-generator' ),
                 'options' => [
@@ -74,17 +81,8 @@ function ldvr_register_meta_boxes( $meta_boxes ) {
                 ],
                 'std'     => 'right',
             ],
-            [
-                'type' => 'color',
-                'name' => esc_html__( 'Button color', 'online-generator' ),
-                'id'   => $prefix . 'button_color',
-            ],
-            [
-                'type' => 'text',
-                'name' => esc_html__( 'Product Name', 'online-generator' ),
-                'id'   => $prefix . 'product_name',
-                'desc' => esc_html__( 'Insert your Product Name,' ),
-            ],
+           
+           
             [
                 'type'    => 'select',
                 'name'    => esc_html__( 'Tooltip', 'online-generator' ),
@@ -101,7 +99,12 @@ function ldvr_register_meta_boxes( $meta_boxes ) {
                 'name' => esc_html__( 'Tooltip Text', 'online-generator' ),
                 'id'   => $prefix . 'tooltip_text',
                 'desc' => esc_html__( 'Text for your Face2 button', 'online-generator' ),
-                'std'  => 'Start a Video Call',
+                'std'  => 'Start video-call',
+            ],
+            [
+                'type' => 'color',
+                'name' => esc_html__( 'Button Color', 'online-generator' ),
+                'id'   => $prefix . 'button_color',
             ],
             [
                 'type'    => 'select',
@@ -125,19 +128,20 @@ function ldvr_register_meta_boxes( $meta_boxes ) {
                 ],
                 'std'     => 'true',
             ],
-           
-           
             [
                 'type'    => 'select',
-                'name'    => esc_html__( 'Hide Offline Mobile', 'online-generator' ),
-                'id'      => $prefix . 'hide_offline_mobile',
-                'desc'    => esc_html__( 'Hide the Face2 button on mobile devices, while not available', 'online-generator' ),
+                'name'    => esc_html__( 'Return Url', 'online-generator' ),
+                'id'      => $prefix . 'return_url',
+                'desc'    => esc_html__( 'Retur to page after call', 'online-generator' ),
                 'options' => [
                     'true'  => esc_html__( 'True', 'online-generator' ),
                     'false' => esc_html__( 'False', 'online-generator' ),
                 ],
                 'std'     => 'false',
             ],
+
+           
+         
             [
                 'type'    => 'select',
                 'name'    => esc_html__( 'Hide Offline', 'online-generator' ),
@@ -151,28 +155,28 @@ function ldvr_register_meta_boxes( $meta_boxes ) {
             ],
             [
                 'type'    => 'select',
-                'name'    => esc_html__( 'Return Url', 'online-generator' ),
-                'id'      => $prefix . 'return_url',
-                'desc'    => esc_html__( 'Retur to page after call', 'online-generator' ),
+                'name'    => esc_html__( 'Hide Offline Mobile', 'online-generator' ),
+                'id'      => $prefix . 'hide_offline_mobile',
+                'desc'    => esc_html__( 'Hide the Face2 button on mobile devices, while not available', 'online-generator' ),
                 'options' => [
                     'true'  => esc_html__( 'True', 'online-generator' ),
                     'false' => esc_html__( 'False', 'online-generator' ),
                 ],
                 'std'     => 'false',
             ],
-
+            [
+                'type' => 'text',
+                'name' => esc_html__( 'Product Name', 'online-generator' ),
+                'id'   => $prefix . 'product_name',
+                'desc' => esc_html__( 'Insert your Product Name,' ),
+            ],
             [
                 'type' => 'textarea',
                 'name' => esc_html__( 'Meta', 'online-generator' ),
                 'id'   => $prefix . 'meta',
                 'desc' => esc_html__( 'Insert parameters you want to collect | Javascript object', 'online-generator' ),
             ],
-            [
-                'type' => 'text',
-                'name' => esc_html__( 'Face2 Key	', 'online-generator' ),
-                'id'   => $prefix . 'face2_key',
-                'desc' => esc_html__( 'Insert your Face2 key, which you received with the Wordpress plugin', 'online-generator' ),
-            ],
+            
         ],
     ];
 
@@ -274,9 +278,9 @@ function wof_create_button_shortcode($atts){
                     
                     position: "<?php echo $get_btn_type === 'non-float' ? '' : rwmb_meta( 'position', [] , esc_html($post_id)); ?>",
                     
-                    hideOfflineMobile: "<?php echo ($offline_mobile == "false")? $offline_mobile: ''; ?>",
+                    hideOfflineMobile: <?php echo ($offline_mobile == "false")? $offline_mobile : true; ?>,
                     
-                    hideOffline: "<?php if($hide_offline == "false"){echo $hide_offline;} ?>",
+                    hideOffline: <?php if($hide_offline == "false"){echo $hide_offline;} ?>,
                     
                     bgColor: "<?php echo rwmb_meta( 'button_color' , [] , esc_html($post_id)); ?>",
                     
@@ -329,3 +333,10 @@ function ldvr_display_side_shortcode(){
     }
      echo "<code>[face2Button id='". esc_attr($cure_id) ."']</code>";
 }
+
+// add_filter( 'rwmb_outside_conditions', function( $conditions ) {
+//     $conditions= array(
+//         'hidden' => ['button_type', '==', 'non-float' ],
+//     );
+//     return $conditions;
+// } );
