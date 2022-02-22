@@ -54,25 +54,25 @@ function ldvr_register_meta_boxes( $meta_boxes ) {
         'fields'  => [
             [
                 'type' => 'text',
-                'name' => esc_html__( 'Face2 Key	', 'online-generator' ),
+                'name' => esc_html__( 'Face2 key	', 'online-generator' ),
                 'id'   => $prefix . 'face2_key',
                 'desc' => esc_html__( 'Insert your Face2 key, which you received with the Wordpress plugin', 'online-generator' ),
             ],
            
             [
                 'type'    => 'select',
-                'name'    => esc_html__( 'Button Type', 'online-generator' ),
+                'name'    => esc_html__( 'Button type', 'online-generator' ),
                 'id'      => $prefix . 'button_type',
                 'desc' => esc_html__( '', 'online-generator' ),
                 'options' => [
-                    'non-float'       => esc_html__( 'Product Detail', 'online-generator' ),
                     'float' => esc_html__( 'Floating', 'online-generator' ),
+                    'non-float'       => esc_html__( 'Product Detail', 'online-generator' ),
                 ],
             ],
 
             [
                 'type'    => 'select',
-                'name'    => esc_html__( 'Button Position', 'online-generator' ),
+                'name'    => esc_html__( 'Button position', 'online-generator' ),
                 'id'      => $prefix . 'position',
                 'desc'    => esc_html__( 'Position of the Face2 button on your website', 'online-generator' ),
                 'options' => [
@@ -96,19 +96,19 @@ function ldvr_register_meta_boxes( $meta_boxes ) {
             ],
             [
                 'type' => 'text',
-                'name' => esc_html__( 'Tooltip Text', 'online-generator' ),
+                'name' => esc_html__( 'Tooltip text', 'online-generator' ),
                 'id'   => $prefix . 'tooltip_text',
                 'desc' => esc_html__( 'Text for your Face2 button', 'online-generator' ),
                 'std'  => 'Start video-call',
             ],
             [
                 'type' => 'color',
-                'name' => esc_html__( 'Button Color', 'online-generator' ),
+                'name' => esc_html__( 'Button color', 'online-generator' ),
                 'id'   => $prefix . 'button_color',
             ],
             [
                 'type'    => 'select',
-                'name'    => esc_html__( 'Corner Rounding', 'online-generator' ),
+                'name'    => esc_html__( 'Corner rounding', 'online-generator' ),
                 'id'      => $prefix . 'corner_rounding',
                 'desc'    => esc_html__( 'The design of the Face2 button', 'online-generator' ),
                 'options' => [
@@ -119,7 +119,7 @@ function ldvr_register_meta_boxes( $meta_boxes ) {
             ],
             [
                 'type'    => 'select',
-                'name'    => esc_html__( 'DC', 'online-generator' ),
+                'name'    => esc_html__( 'Direct call', 'online-generator' ),
                 'id'      => $prefix . 'dc',
                 'desc'    => esc_html__( 'Enable/disable the Direct call feature', 'online-generator' ),
                 'options' => [
@@ -130,7 +130,7 @@ function ldvr_register_meta_boxes( $meta_boxes ) {
             ],
             [
                 'type'    => 'select',
-                'name'    => esc_html__( 'Return Url', 'online-generator' ),
+                'name'    => esc_html__( 'Return url', 'online-generator' ),
                 'id'      => $prefix . 'return_url',
                 'desc'    => esc_html__( 'Retur to page after call', 'online-generator' ),
                 'options' => [
@@ -144,7 +144,7 @@ function ldvr_register_meta_boxes( $meta_boxes ) {
          
             [
                 'type'    => 'select',
-                'name'    => esc_html__( 'Hide Offline', 'online-generator' ),
+                'name'    => esc_html__( 'Hide offline', 'online-generator' ),
                 'id'      => $prefix . 'hide_offline',
                 'desc'    => esc_html__( 'Hide the Face2 button on web, while not available', 'online-generator' ),
                 'options' => [
@@ -155,7 +155,7 @@ function ldvr_register_meta_boxes( $meta_boxes ) {
             ],
             [
                 'type'    => 'select',
-                'name'    => esc_html__( 'Hide Offline Mobile', 'online-generator' ),
+                'name'    => esc_html__( 'Hide offline mobile', 'online-generator' ),
                 'id'      => $prefix . 'hide_offline_mobile',
                 'desc'    => esc_html__( 'Hide the Face2 button on mobile devices, while not available', 'online-generator' ),
                 'options' => [
@@ -166,7 +166,7 @@ function ldvr_register_meta_boxes( $meta_boxes ) {
             ],
             [
                 'type' => 'text',
-                'name' => esc_html__( 'Product Name', 'online-generator' ),
+                'name' => esc_html__( 'Product name', 'online-generator' ),
                 'id'   => $prefix . 'product_name',
                 'desc' => esc_html__( 'Insert your Product Name,' ),
             ],
