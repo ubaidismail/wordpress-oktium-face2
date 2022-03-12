@@ -6,7 +6,7 @@ function wof_create_post_type(){
         'singular_name' => 'Face2 Button',
         'all_items'           => __( 'All Button', 'twentytwenty' ),
         'view_item'           => __( 'View Button', 'twentytwenty' ),
-        'add_new_item'        => __( 'Add New Button', 'twentytwenty' ),
+        'add_new_item'        => __( 'Button name', 'twentytwenty' ),
         'add_new'             => __( 'Add New', 'twentytwenty' ),
         'edit_item'           => __( 'Edit Button', 'twentytwenty' ),
         'update_item'         => __( 'Update Button', 'twentytwenty' ),
@@ -85,7 +85,7 @@ function ldvr_register_meta_boxes( $meta_boxes ) {
            
             [
                 'type'    => 'select',
-                'name'    => esc_html__( 'Tooltip', 'online-generator' ),
+                'name'    => esc_html__( 'Description', 'online-generator' ),
                 'id'      => $prefix . 'tooltip',
                 'desc'    => esc_html__( 'Enable/disable Face2 button text', 'online-generator' ),
                 'options' => [
@@ -96,7 +96,7 @@ function ldvr_register_meta_boxes( $meta_boxes ) {
             ],
             [
                 'type' => 'text',
-                'name' => esc_html__( 'Tooltip text', 'online-generator' ),
+                'name' => esc_html__( 'Description text', 'online-generator' ),
                 'id'   => $prefix . 'tooltip_text',
                 'desc' => esc_html__( 'Text for your Face2 button', 'online-generator' ),
                 'std'  => 'Start video-call',
@@ -137,7 +137,7 @@ function ldvr_register_meta_boxes( $meta_boxes ) {
                     'true'  => esc_html__( 'True', 'online-generator' ),
                     'false' => esc_html__( 'False', 'online-generator' ),
                 ],
-                'std'     => 'false',
+                'std'     => 'true',
             ],
 
            
@@ -228,22 +228,13 @@ function wof_create_button_shortcode($atts){
 
     wp_enqueue_script('OktiumButton' , 'https://cdn.oktium.com/face2widget-latest.min.js' , [] , false, true);
 
-    $get_content_query = new WP_Query( array(
-        'post_type' => 'face2buttons',
-        'p' => $attrs['id'],
-    ) );
-    
-    if (count($get_content_query->posts) < 1) {
+    $post_id = intval( $attrs['id'] );
+    $post = get_post( $post_id );
+    if (empty($post)) {
         return '';
     }
-    
-    $post = $get_content_query->posts[0];
-    $post_id = $post->ID;
+
     $get_btn_type = rwmb_meta( 'button_type' , [] , $post->ID);
-    
-    if($get_btn_type === 'non-float') {
-        echo '<a id="face2Button-'.esc_attr($post_id).'"></a>';
-    }
 
     $face2key_exist = get_option('face2_option_face2Key');
     $product_name = rwmb_meta( 'product_name' , [] , esc_html($post_id));
@@ -258,36 +249,27 @@ function wof_create_button_shortcode($atts){
 
     ob_start();
     ?>
+        <?php if ( $get_btn_type === 'non-float') : ?>
+            <a id="face2Button-<?php echo esc_attr($post_id); ?>"></a>
+        <?php endif; ?>
+
         <script type="text/javascript">
             window.addEventListener('load', function() {
                 if (!window.Oktium) return;
 
                 new window.Oktium({
-                    
                     face2Key: "<?php if($hide_offline == "false" && $offline_mobile == "false"){echo $face2;} ?>",
-                    
                     productName: "<?php echo $product_name; ?>",
-
                     tooltip: "<?php echo ($tooltip == "true")? $tooltip : '' ?>",
-
                     tooltipText: "<?php  echo ($tooltip == "true")? $text_tooltip : ''; ?>",
-                    
                     cornerRounding: <?php echo ($corner_round == 'true') ? 'true' : 'false'; ?>,
-                    
                     dc: "<?php echo rwmb_meta( 'dc' , [] , esc_html($post_id)); ?>",
-                    
                     position: "<?php echo $get_btn_type === 'non-float' ? '' : rwmb_meta( 'position', [] , esc_html($post_id)); ?>",
-                    
                     hideOfflineMobile: <?php echo ($offline_mobile == "false")? $offline_mobile : true; ?>,
-                    
                     hideOffline: <?php if($hide_offline == "false"){echo $hide_offline;} ?>,
-                    
                     bgColor: "<?php echo rwmb_meta( 'button_color' , [] , esc_html($post_id)); ?>",
-                    
                     returnUrl: "<?php echo ($return_url == "true")? $return_url : ''  ?>",
-                    
                     meta: <?php json_decode($meta); echo (json_last_error() === JSON_ERROR_NONE) ? $meta : '""';  ?>,
-                    
                     target: "face2Button-<?php echo esc_attr($post_id); ?>",
                 }).init();
             }, false);

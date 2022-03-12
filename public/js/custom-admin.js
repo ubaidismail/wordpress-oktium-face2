@@ -17,8 +17,8 @@
         jQuery('select#position').hide(); 
         jQuery('select#position').parent().parent().hide();
     }else{
-        jQuery('select#position').parent().parent().show();
         jQuery('select#position').show();
+        jQuery('select#position').parent().parent().show();
         // jQuery('input#tooltip_text').val('Start A Video Call');
     }
     });
