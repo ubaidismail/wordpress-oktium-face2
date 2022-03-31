@@ -176,6 +176,12 @@ function ldvr_register_meta_boxes( $meta_boxes ) {
                 'id'   => $prefix . 'meta',
                 'desc' => esc_html__( 'Insert parameters you want to collect | Javascript object', 'online-generator' ),
             ],
+            [
+                'type' => 'text',
+                'name' => esc_html__( 'URL', 'online-generator' ),
+                'id'   => $prefix . 'URL_page',
+                'desc' => esc_html__( 'Insert the URL of the page where you want the button to appear (e.g: example.com/page)', 'online-generator' ),
+            ],
             
         ],
     ];
@@ -288,7 +294,13 @@ function wof_redner_btn($atts){
 
     foreach ( $get_content_query->posts as $post ) {
         $get_btn_type = rwmb_meta( 'button_type' , [] , $post->ID);
-        if($get_btn_type === 'float'){
+        $get_url_input = rwmb_meta( 'URL_page' , [] , $post->ID);
+        $end = array_slice(explode('/', rtrim($get_url_input, '/')), -1)[0];
+        if($get_btn_type === 'float' && !empty($end)){
+            if(is_page($end)){
+                echo wof_create_button_shortcode(['id' => $post->ID]);
+            }
+        }else if($get_btn_type === 'float' && empty($end)){
             echo wof_create_button_shortcode(['id' => $post->ID]);
         }
     }
