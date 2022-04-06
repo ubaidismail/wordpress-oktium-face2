@@ -7,7 +7,6 @@
  * public-facing side of the site and the admin area.
  *
  * @link       http://oktium.com
- * @since      1.0.0
  *
  * @package    Face2_Widget
  * @subpackage Face2_Widget/includes
@@ -27,22 +26,7 @@
  * @subpackage Face2_Widget/includes
  * @author     iShopping inc. <developer@oktium.com>
  */
-/** 
- * Register all actions and filters for the plugin
- * @link https://oktium.com
- * @since 1.0.0
- * @package Face2_Widget 
- * @subpackage Face2_Widget/includes
-*/
-/** 
- *  Register all actions and filters for the plugin.
- * Maintain a list of all hooks that are registered throughout 
- * the plugin, and register them with the WordPress API. 
- * Call the run function to execute the list of actions and filters.
- * @package Face2_Widget
- * @subpackage Face2_Widget/includes 
- * @author Oktium
-*/
+
 class Face2_Widget {
 
 	/**
@@ -58,7 +42,6 @@ class Face2_Widget {
 	/**
 	 * The unique identifier of this plugin.
 	 *
-	 * @since    1.0.0
 	 * @access   protected
 	 * @var      string    $face2_widget    The string used to uniquely identify this plugin.
 	 */
@@ -67,7 +50,6 @@ class Face2_Widget {
 	/**
 	 * The current version of the plugin.
 	 *
-	 * @since    1.0.0
 	 * @access   protected
 	 * @var      string    $version    The current version of the plugin.
 	 */
@@ -80,7 +62,6 @@ class Face2_Widget {
 	 * Load the dependencies, define the locale, and set the hooks for the admin area and
 	 * the public-facing side of the site.
 	 *
-	 * @since    1.0.0
 	 */
 	/** 
 	 * Register all actions and filters for the plugin
@@ -207,13 +188,7 @@ class Face2_Widget {
 
 	}
 
-	/**
-	 * Register all of the hooks related to the admin area functionality
-	 * of the plugin.
-	 *
-	 * @since    1.0.0
-	 * @access   private
-	 */
+
 	/** 
 	 * Register all actions and filters for the plugin
 	 * @link https://oktium.com
@@ -246,13 +221,7 @@ class Face2_Widget {
 
 	}
 
-	/**
-	 * Register all of the hooks related to the public-facing functionality
-	 * of the plugin.
-	 *
-	 * @since    1.0.0
-	 * @access   private
-	 */
+
 	/** 
 	 * Register all actions and filters for the plugin
 	 * @link https://oktium.com

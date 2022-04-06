@@ -1,18 +1,5 @@
 <?php
 
-
-
-/**
- * Register all actions and filters for the plugin.
- *
- * Maintain a list of all hooks that are registered throughout
- * the plugin, and register them with the WordPress API. Call the
- * run function to execute the list of actions and filters.
- *
- * @package    Face2_Widget
- * @subpackage Face2_Widget/includes
- * @author     Your Name <email@example.com>
- */
 /** 
  * Register all actions and filters for the plugin
  * @link https://oktium.com
@@ -148,12 +135,6 @@ class Face2_Widget_Loader {
 		return $hooks;
 
 	}
-
-	/**
-	 * Register the filters and actions with WordPress.
-	 *
-	 * @since    1.0.0
-	 */
 	/** 
 	 * Register all actions and filters for the plugin
 	 * @link https://oktium.com
