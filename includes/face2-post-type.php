@@ -1,10 +1,20 @@
 <?php
+
 /** 
  * Register all actions and filters for the plugin
  * @link https://oktium.com
  * @since 1.0.0
  * @package Face2_Widget 
  * @subpackage Face2_Widget/includes
+*/
+/** 
+ *  Register all actions and filters for the plugin.
+ * Maintain a list of all hooks that are registered throughout 
+ * the plugin, and register them with the WordPress API. 
+ * Call the run function to execute the list of actions and filters.
+ * @package Face2_Widget
+ * @subpackage Face2_Widget/includes 
+ * @author Oktium
 */
 function wof_create_post_type(){
     $label = [
@@ -43,12 +53,22 @@ function wof_create_post_type(){
     register_post_type( 'face2buttons', $args );
 }
 add_action( 'init', 'wof_create_post_type' );
+
 /** 
  * Register all actions and filters for the plugin
  * @link https://oktium.com
  * @since 1.0.0
  * @package Face2_Widget 
  * @subpackage Face2_Widget/includes
+*/
+/** 
+ *  Register all actions and filters for the plugin.
+ * Maintain a list of all hooks that are registered throughout 
+ * the plugin, and register them with the WordPress API. 
+ * Call the run function to execute the list of actions and filters.
+ * @package Face2_Widget
+ * @subpackage Face2_Widget/includes 
+ * @author Oktium
 */
 add_filter( 'rwmb_meta_boxes', 'ldvr_register_meta_boxes' );
 
@@ -207,6 +227,15 @@ function ldvr_register_meta_boxes( $meta_boxes ) {
  * @package Face2_Widget 
  * @subpackage Face2_Widget/includes
 */
+/** 
+ *  Register all actions and filters for the plugin.
+ * Maintain a list of all hooks that are registered throughout 
+ * the plugin, and register them with the WordPress API. 
+ * Call the run function to execute the list of actions and filters.
+ * @package Face2_Widget
+ * @subpackage Face2_Widget/includes 
+ * @author Oktium
+*/
 // Add the custom columns to the face2_post_type post type:
 add_filter( 'manage_face2buttons_posts_columns', 'set_custom_edit_face2buttons_columns' );
 function set_custom_edit_face2buttons_columns($columns) {
@@ -222,7 +251,15 @@ function set_custom_edit_face2buttons_columns($columns) {
  * @package Face2_Widget 
  * @subpackage Face2_Widget/includes
 */
-
+/** 
+ *  Register all actions and filters for the plugin.
+ * Maintain a list of all hooks that are registered throughout 
+ * the plugin, and register them with the WordPress API. 
+ * Call the run function to execute the list of actions and filters.
+ * @package Face2_Widget
+ * @subpackage Face2_Widget/includes 
+ * @author Oktium
+*/
 add_action( 'manage_face2buttons_posts_custom_column', 'ldvr_table_content', 10, 2 );
 function ldvr_table_content( $column_name, $post_id ) {
     // var_dump($column_name);
@@ -254,6 +291,15 @@ function ldvr_table_content( $column_name, $post_id ) {
  * @since 1.0.0
  * @package Face2_Widget 
  * @subpackage Face2_Widget/includes
+*/
+/** 
+ *  Register all actions and filters for the plugin.
+ * Maintain a list of all hooks that are registered throughout 
+ * the plugin, and register them with the WordPress API. 
+ * Call the run function to execute the list of actions and filters.
+ * @package Face2_Widget
+ * @subpackage Face2_Widget/includes 
+ * @author Oktium
 */
 // creating shortcode
 add_shortcode('face2Button' , 'wof_create_button_shortcode');
@@ -321,6 +367,15 @@ function wof_create_button_shortcode($atts){
  * @package Face2_Widget 
  * @subpackage Face2_Widget/includes
 */
+/** 
+ *  Register all actions and filters for the plugin.
+ * Maintain a list of all hooks that are registered throughout 
+ * the plugin, and register them with the WordPress API. 
+ * Call the run function to execute the list of actions and filters.
+ * @package Face2_Widget
+ * @subpackage Face2_Widget/includes 
+ * @author Oktium
+*/
 // enqueue content in footer
 add_action( 'wp_head' , 'wof_redner_btn', 999 );
 function wof_redner_btn($atts){
@@ -349,6 +404,15 @@ function wof_redner_btn($atts){
  * @package Face2_Widget 
  * @subpackage Face2_Widget/includes
 */
+/** 
+ *  Register all actions and filters for the plugin.
+ * Maintain a list of all hooks that are registered throughout 
+ * the plugin, and register them with the WordPress API. 
+ * Call the run function to execute the list of actions and filters.
+ * @package Face2_Widget
+ * @subpackage Face2_Widget/includes 
+ * @author Oktium
+*/
 function ldvr_admin_enqueue() {
 	// Only add to the edit.php admin page.
 	// See WP docs.
@@ -363,6 +427,15 @@ add_action('admin_enqueue_scripts', 'ldvr_admin_enqueue');
  * @since 1.0.0
  * @package Face2_Widget 
  * @subpackage Face2_Widget/includes
+*/
+/** 
+ *  Register all actions and filters for the plugin.
+ * Maintain a list of all hooks that are registered throughout 
+ * the plugin, and register them with the WordPress API. 
+ * Call the run function to execute the list of actions and filters.
+ * @package Face2_Widget
+ * @subpackage Face2_Widget/includes 
+ * @author Oktium
 */
 add_action("admin_init", "ldvr_btn_shortcode_on_post_eddit_screen");
 function ldvr_btn_shortcode_on_post_eddit_screen(){

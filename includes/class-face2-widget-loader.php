@@ -1,12 +1,6 @@
 <?php
 
-/** 
- * Register all actions and filters for the plugin
- * @link https://oktium.com
- * @since 1.0.0
- * @package Face2_Widget 
- * @subpackage Face2_Widget/includes
-*/
+
 
 /**
  * Register all actions and filters for the plugin.
@@ -19,6 +13,22 @@
  * @subpackage Face2_Widget/includes
  * @author     Your Name <email@example.com>
  */
+/** 
+ * Register all actions and filters for the plugin
+ * @link https://oktium.com
+ * @since 1.0.0
+ * @package Face2_Widget 
+ * @subpackage Face2_Widget/includes
+*/
+/** 
+ *  Register all actions and filters for the plugin.
+ * Maintain a list of all hooks that are registered throughout 
+ * the plugin, and register them with the WordPress API. 
+ * Call the run function to execute the list of actions and filters.
+ * @package Face2_Widget
+ * @subpackage Face2_Widget/includes 
+ * @author Oktium
+*/
 class Face2_Widget_Loader {
 
 	/**
@@ -82,6 +92,15 @@ class Face2_Widget_Loader {
 	 * @package Face2_Widget 
 	 * @subpackage Face2_Widget/includes
 	*/
+	/** 
+	 *  Register all actions and filters for the plugin.
+	 * Maintain a list of all hooks that are registered throughout 
+	 * the plugin, and register them with the WordPress API. 
+	 * Call the run function to execute the list of actions and filters.
+	 * @package Face2_Widget
+	 * @subpackage Face2_Widget/includes 
+	 * @author Oktium
+	*/
 	public function add_filter( $hook, $component, $callback, $priority = 10, $accepted_args = 1 ) {
 		$this->filters = $this->add( $this->filters, $hook, $component, $callback, $priority, $accepted_args );
 	}
@@ -106,6 +125,15 @@ class Face2_Widget_Loader {
 	 * @since 1.0.0
 	 * @package Face2_Widget 
 	 * @subpackage Face2_Widget/includes
+	*/
+	/** 
+	 *  Register all actions and filters for the plugin.
+	 * Maintain a list of all hooks that are registered throughout 
+	 * the plugin, and register them with the WordPress API. 
+	 * Call the run function to execute the list of actions and filters.
+	 * @package Face2_Widget
+	 * @subpackage Face2_Widget/includes 
+	 * @author Oktium
 	*/
 	private function add( $hooks, $hook, $component, $callback, $priority, $accepted_args ) {
 
@@ -132,6 +160,15 @@ class Face2_Widget_Loader {
 	 * @since 1.0.0
 	 * @package Face2_Widget 
 	 * @subpackage Face2_Widget/includes
+	*/
+	/** 
+	 *  Register all actions and filters for the plugin.
+	 * Maintain a list of all hooks that are registered throughout 
+	 * the plugin, and register them with the WordPress API. 
+	 * Call the run function to execute the list of actions and filters.
+	 * @package Face2_Widget
+	 * @subpackage Face2_Widget/includes 
+	 * @author Oktium
 	*/
 	public function run() {
 
