@@ -1,5 +1,11 @@
 <?php
-
+/** 
+ * Register all actions and filters for the plugin
+ * @link https://oktium.com
+ * @since 1.0.0
+ * @package Face2_Widget 
+ * @subpackage Face2_Widget/includes
+*/
 function wof_create_post_type(){
     $label = [
         'name'          => 'Face2 Buttons',
@@ -37,7 +43,13 @@ function wof_create_post_type(){
     register_post_type( 'face2buttons', $args );
 }
 add_action( 'init', 'wof_create_post_type' );
-
+/** 
+ * Register all actions and filters for the plugin
+ * @link https://oktium.com
+ * @since 1.0.0
+ * @package Face2_Widget 
+ * @subpackage Face2_Widget/includes
+*/
 add_filter( 'rwmb_meta_boxes', 'ldvr_register_meta_boxes' );
 
 function ldvr_register_meta_boxes( $meta_boxes ) {
@@ -188,7 +200,13 @@ function ldvr_register_meta_boxes( $meta_boxes ) {
 
     return $meta_boxes;
 }
-
+/** 
+ * Register all actions and filters for the plugin
+ * @link https://oktium.com
+ * @since 1.0.0
+ * @package Face2_Widget 
+ * @subpackage Face2_Widget/includes
+*/
 // Add the custom columns to the face2_post_type post type:
 add_filter( 'manage_face2buttons_posts_columns', 'set_custom_edit_face2buttons_columns' );
 function set_custom_edit_face2buttons_columns($columns) {
@@ -197,8 +215,15 @@ function set_custom_edit_face2buttons_columns($columns) {
     return $columns;
 }
 
-add_action( 'manage_face2buttons_posts_custom_column', 'ldvr_table_content', 10, 2 );
+/** 
+ * Register all actions and filters for the plugin
+ * @link https://oktium.com
+ * @since 1.0.0
+ * @package Face2_Widget 
+ * @subpackage Face2_Widget/includes
+*/
 
+add_action( 'manage_face2buttons_posts_custom_column', 'ldvr_table_content', 10, 2 );
 function ldvr_table_content( $column_name, $post_id ) {
     // var_dump($column_name);
     if( $column_name == 'shortcode' ) 
@@ -223,8 +248,14 @@ function ldvr_table_content( $column_name, $post_id ) {
     }
 }
 
+/** 
+ * Register all actions and filters for the plugin
+ * @link https://oktium.com
+ * @since 1.0.0
+ * @package Face2_Widget 
+ * @subpackage Face2_Widget/includes
+*/
 // creating shortcode
-
 add_shortcode('face2Button' , 'wof_create_button_shortcode');
 function wof_create_button_shortcode($atts){
 
@@ -283,7 +314,13 @@ function wof_create_button_shortcode($atts){
     <?php
     return ob_get_clean();
 }
-
+/** 
+ * Register all actions and filters for the plugin
+ * @link https://oktium.com
+ * @since 1.0.0
+ * @package Face2_Widget 
+ * @subpackage Face2_Widget/includes
+*/
 // enqueue content in footer
 add_action( 'wp_head' , 'wof_redner_btn', 999 );
 function wof_redner_btn($atts){
@@ -305,7 +342,13 @@ function wof_redner_btn($atts){
         }
     }
 }
-
+/** 
+ * Register all actions and filters for the plugin
+ * @link https://oktium.com
+ * @since 1.0.0
+ * @package Face2_Widget 
+ * @subpackage Face2_Widget/includes
+*/
 function ldvr_admin_enqueue() {
 	// Only add to the edit.php admin page.
 	// See WP docs.
@@ -314,8 +357,14 @@ function ldvr_admin_enqueue() {
 }
 add_action('admin_enqueue_scripts', 'ldvr_admin_enqueue');
 
+/** 
+ * Register all actions and filters for the plugin
+ * @link https://oktium.com
+ * @since 1.0.0
+ * @package Face2_Widget 
+ * @subpackage Face2_Widget/includes
+*/
 add_action("admin_init", "ldvr_btn_shortcode_on_post_eddit_screen");
-   
 function ldvr_btn_shortcode_on_post_eddit_screen(){
     add_meta_box("side_shortcode", "Button Shortcode", "ldvr_display_side_shortcode", "face2buttons", "side", "high");
 }
@@ -328,9 +377,3 @@ function ldvr_display_side_shortcode(){
      echo "<code>[face2Button id='". esc_attr($cure_id) ."']</code>";
 }
 
-// add_filter( 'rwmb_outside_conditions', function( $conditions ) {
-//     $conditions= array(
-//         'hidden' => ['button_type', '==', 'non-float' ],
-//     );
-//     return $conditions;
-// } );

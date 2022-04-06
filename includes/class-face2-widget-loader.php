@@ -1,14 +1,12 @@
 <?php
 
-/**
+/** 
  * Register all actions and filters for the plugin
- *
- * @link       http://example.com
- * @since      1.0.0
- *
- * @package    Face2_Widget
+ * @link https://oktium.com
+ * @since 1.0.0
+ * @package Face2_Widget 
  * @subpackage Face2_Widget/includes
- */
+*/
 
 /**
  * Register all actions and filters for the plugin.
@@ -77,6 +75,13 @@ class Face2_Widget_Loader {
 	 * @param    int                  $priority         Optional. The priority at which the function should be fired. Default is 10.
 	 * @param    int                  $accepted_args    Optional. The number of arguments that should be passed to the $callback. Default is 1
 	 */
+	/** 
+	 * Register all actions and filters for the plugin
+	 * @link https://oktium.com
+	 * @since 1.0.0
+	 * @package Face2_Widget 
+	 * @subpackage Face2_Widget/includes
+	*/
 	public function add_filter( $hook, $component, $callback, $priority = 10, $accepted_args = 1 ) {
 		$this->filters = $this->add( $this->filters, $hook, $component, $callback, $priority, $accepted_args );
 	}
@@ -95,6 +100,13 @@ class Face2_Widget_Loader {
 	 * @param    int                  $accepted_args    The number of arguments that should be passed to the $callback.
 	 * @return   array                                  The collection of actions and filters registered with WordPress.
 	 */
+	/** 
+	 * Register all actions and filters for the plugin
+	 * @link https://oktium.com
+	 * @since 1.0.0
+	 * @package Face2_Widget 
+	 * @subpackage Face2_Widget/includes
+	*/
 	private function add( $hooks, $hook, $component, $callback, $priority, $accepted_args ) {
 
 		$hooks[] = array(
@@ -114,6 +126,13 @@ class Face2_Widget_Loader {
 	 *
 	 * @since    1.0.0
 	 */
+	/** 
+	 * Register all actions and filters for the plugin
+	 * @link https://oktium.com
+	 * @since 1.0.0
+	 * @package Face2_Widget 
+	 * @subpackage Face2_Widget/includes
+	*/
 	public function run() {
 
 		foreach ( $this->filters as $hook ) {

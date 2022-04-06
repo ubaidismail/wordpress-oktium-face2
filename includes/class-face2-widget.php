@@ -27,6 +27,13 @@
  * @subpackage Face2_Widget/includes
  * @author     iShopping inc. <developer@oktium.com>
  */
+/** 
+ * Register all actions and filters for the plugin
+ * @link https://oktium.com
+ * @since 1.0.0
+ * @package Face2_Widget 
+ * @subpackage Face2_Widget/includes
+*/
 class Face2_Widget {
 
 	/**
@@ -66,6 +73,13 @@ class Face2_Widget {
 	 *
 	 * @since    1.0.0
 	 */
+	/** 
+	 * Register all actions and filters for the plugin
+	 * @link https://oktium.com
+	 * @since 1.0.0
+	 * @package Face2_Widget 
+	 * @subpackage Face2_Widget/includes
+	*/
 	public function __construct() {
 		if ( defined( 'FACE2_WIDGET_VERSION' ) ) {
 			$this->version = FACE2_WIDGET_VERSION;
@@ -97,6 +111,13 @@ class Face2_Widget {
 	 * @since    1.0.0
 	 * @access   private
 	 */
+	/** 
+	 * Register all actions and filters for the plugin
+	 * @link https://oktium.com
+	 * @since 1.0.0
+	 * @package Face2_Widget 
+	 * @subpackage Face2_Widget/includes
+	*/
 	private function load_dependencies() {
 
 		/**
@@ -135,6 +156,13 @@ class Face2_Widget {
 	 * @since    1.0.0
 	 * @access   private
 	 */
+	/** 
+	 * Register all actions and filters for the plugin
+	 * @link https://oktium.com
+	 * @since 1.0.0
+	 * @package Face2_Widget 
+	 * @subpackage Face2_Widget/includes
+	*/
 	private function set_locale() {
 
 		$plugin_i18n = new Face2_Widget_i18n();
@@ -150,6 +178,13 @@ class Face2_Widget {
 	 * @since    1.0.0
 	 * @access   private
 	 */
+	/** 
+	 * Register all actions and filters for the plugin
+	 * @link https://oktium.com
+	 * @since 1.0.0
+	 * @package Face2_Widget 
+	 * @subpackage Face2_Widget/includes
+	*/
 	private function define_admin_hooks() {
 
 		$plugin_admin = new Face2_Widget_Admin( $this->get_face2_widget(), $this->get_version() );
@@ -173,6 +208,13 @@ class Face2_Widget {
 	 * @since    1.0.0
 	 * @access   private
 	 */
+	/** 
+	 * Register all actions and filters for the plugin
+	 * @link https://oktium.com
+	 * @since 1.0.0
+	 * @package Face2_Widget 
+	 * @subpackage Face2_Widget/includes
+	*/
 	private function define_public_hooks() {
 
 		$plugin_public = new Face2_Widget_Public( $this->get_face2_widget(), $this->get_version() );
@@ -189,6 +231,13 @@ class Face2_Widget {
 	 *
 	 * @since    1.0.0
 	 */
+	/** 
+	 * Register all actions and filters for the plugin
+	 * @link https://oktium.com
+	 * @since 1.0.0
+	 * @package Face2_Widget 
+	 * @subpackage Face2_Widget/includes
+	*/
 	public function run() {
 		$this->loader->run();
 	}
@@ -200,6 +249,13 @@ class Face2_Widget {
 	 * @since     1.0.0
 	 * @return    string    The name of the plugin.
 	 */
+	/** 
+	 * Register all actions and filters for the plugin
+	 * @link https://oktium.com
+	 * @since 1.0.0
+	 * @package Face2_Widget 
+	 * @subpackage Face2_Widget/includes
+	*/
 	public function get_face2_widget() {
 		return $this->face2_widget;
 	}
@@ -210,6 +266,13 @@ class Face2_Widget {
 	 * @since     1.0.0
 	 * @return    Face2_Widget_Loader    Orchestrates the hooks of the plugin.
 	 */
+	/** 
+	 * Register all actions and filters for the plugin
+	 * @link https://oktium.com
+	 * @since 1.0.0
+	 * @package Face2_Widget 
+	 * @subpackage Face2_Widget/includes
+	*/
 	public function get_loader() {
 		return $this->loader;
 	}
@@ -220,6 +283,13 @@ class Face2_Widget {
 	 * @since     1.0.0
 	 * @return    string    The version number of the plugin.
 	 */
+	/** 
+	 * Register all actions and filters for the plugin
+	 * @link https://oktium.com
+	 * @since 1.0.0
+	 * @package Face2_Widget 
+	 * @subpackage Face2_Widget/includes
+	*/
 	public function get_version() {
 		return $this->version;
 	}

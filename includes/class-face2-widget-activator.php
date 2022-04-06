@@ -20,6 +20,13 @@
  * @subpackage Plugin_Name/includes
  * @author     Your Name <email@example.com>
  */
+/** 
+ * Register all actions and filters for the plugin
+ * @link https://oktium.com
+ * @since 1.0.0
+ * @package Face2_Widget 
+ * @subpackage Face2_Widget/includes
+*/
 class Face2_Widget_Activator {
 
 	/**
@@ -29,6 +36,13 @@ class Face2_Widget_Activator {
 	 *
 	 * @since    1.0.0
 	 */
+	/** 
+	 * Register all actions and filters for the plugin
+	 * @link https://oktium.com
+	 * @since 1.0.0
+	 * @package Face2_Widget 
+	 * @subpackage Face2_Widget/includes
+	*/
 	public static function activate() {
 		do_action('face2_widget_default_values');
 

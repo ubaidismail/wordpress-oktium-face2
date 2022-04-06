@@ -24,6 +24,13 @@
  * @subpackage Face2_Widget/includes
  * @author     Your Name <email@example.com>
  */
+/** 
+ * Register all actions and filters for the plugin
+ * @link https://oktium.com
+ * @since 1.0.0
+ * @package Face2_Widget 
+ * @subpackage Face2_Widget/includes
+*/
 class Face2_Widget_i18n {
 
 
@@ -32,6 +39,13 @@ class Face2_Widget_i18n {
 	 *
 	 * @since    1.0.0
 	 */
+	/** 
+	 * Register all actions and filters for the plugin
+	 * @link https://oktium.com
+	 * @since 1.0.0
+	 * @package Face2_Widget 
+	 * @subpackage Face2_Widget/includes
+	*/
 	public function load_plugin_textdomain() {
 
 		load_plugin_textdomain(

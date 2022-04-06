@@ -42,6 +42,13 @@ define( 'FACE2_WIDGET_VERSION', '1.0.3' );
  * The code that runs during plugin activation.
  * This action is documented in includes/class-face2-widget-activator.php
  */
+/** 
+ * Register all actions and filters for the plugin
+ * @link https://oktium.com
+ * @since 1.0.0
+ * @package Face2_Widget 
+ * @subpackage Face2_Widget/includes
+*/
 function activate_face2_widget() {
 	require_once plugin_dir_path( __FILE__ ) . 'includes/class-face2-widget-activator.php';
 	Face2_Widget_Activator::activate();
@@ -51,6 +58,13 @@ function activate_face2_widget() {
  * The code that runs during plugin deactivation.
  * This action is documented in includes/class-face2-widget-deactivator.php
  */
+/** 
+ * Register all actions and filters for the plugin
+ * @link https://oktium.com
+ * @since 1.0.0
+ * @package Face2_Widget 
+ * @subpackage Face2_Widget/includes
+*/
 function deactivate_face2_widget() {
 	require_once plugin_dir_path( __FILE__ ) . 'includes/class-face2-widget-deactivator.php';
 	Face2_Widget_Deactivator::deactivate();
@@ -74,6 +88,13 @@ include_once plugin_dir_path(__FILE__) . 'includes/face2-post-type.php';
  *
  * @since    1.0.0
  */
+/** 
+ * Register all actions and filters for the plugin
+ * @link https://oktium.com
+ * @since 1.0.0
+ * @package Face2_Widget 
+ * @subpackage Face2_Widget/includes
+*/
 function run_face2_widget() {
 
 	$plugin = new Face2_Widget();

@@ -20,6 +20,12 @@
  * @subpackage Face2_Widget/public
  * @author     iShopping inc. <developer@oktium.com>
  */
+/** 
+ * Register all actions and filters for the plugin
+ * @link https://oktium.com
+ * @since 1.0.0
+ * @package Face2_Widget @subpackage Face2_Widget/includes
+*/
 class Face2_Widget_Public {
 
 	/**
