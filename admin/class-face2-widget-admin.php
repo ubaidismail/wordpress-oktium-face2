@@ -8,17 +8,17 @@
  *
  * @package    Face2_Widget
  * @subpackage Face2_Widget/admin
- */
 
-/**
  * The admin-specific functionality of the plugin.
  *
  * Defines the plugin name, version, and two examples hooks for how to
  * enqueue the admin-specific stylesheet and JavaScript.
  *
- * @package    Face2_Widget
+ * @since     1.0.0
+ * @link https://oktium.com
+ * @package Face2_Widget 
  * @subpackage Face2_Widget/admin
- * @author     iShopping inc. <developer@oktium.com>
+ * @author Oktium
  */
 class Face2_Widget_Admin {
 

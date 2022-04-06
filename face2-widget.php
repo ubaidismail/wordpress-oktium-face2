@@ -41,23 +41,16 @@ define( 'FACE2_WIDGET_VERSION', '1.0.3' );
 /**
  * The code that runs during plugin activation.
  * This action is documented in includes/class-face2-widget-activator.php
- */
-/** 
  * Register all actions and filters for the plugin
- * @link https://oktium.com
+ * 
+ * Activate widget
  * @since 1.0.0
+ * @link https://oktium.com
  * @package Face2_Widget 
- * @subpackage Face2_Widget/includes
-*/
-/** 
- *  Register all actions and filters for the plugin.
- * Maintain a list of all hooks that are registered throughout 
- * the plugin, and register them with the WordPress API. 
- * Call the run function to execute the list of actions and filters.
- * @package Face2_Widget
- * @subpackage Face2_Widget/includes 
+ * @subpackage Face2_Widget
  * @author Oktium
 */
+
 function activate_face2_widget() {
 	require_once plugin_dir_path( __FILE__ ) . 'includes/class-face2-widget-activator.php';
 	Face2_Widget_Activator::activate();
@@ -66,22 +59,12 @@ function activate_face2_widget() {
 /**
  * The code that runs during plugin deactivation.
  * This action is documented in includes/class-face2-widget-deactivator.php
- */
-/** 
- * Register all actions and filters for the plugin
- * @link https://oktium.com
+ * 
+ * Deactivate Widget
  * @since 1.0.0
+ * @link https://oktium.com
  * @package Face2_Widget 
  * @subpackage Face2_Widget/includes
-*/
-/** 
- *  Register all actions and filters for the plugin.
- * Maintain a list of all hooks that are registered throughout 
- * the plugin, and register them with the WordPress API. 
- * Call the run function to execute the list of actions and filters.
- * @package Face2_Widget
- * @subpackage Face2_Widget/includes 
- * @author Oktium
 */
 function deactivate_face2_widget() {
 	require_once plugin_dir_path( __FILE__ ) . 'includes/class-face2-widget-deactivator.php';
@@ -104,23 +87,12 @@ include_once plugin_dir_path(__FILE__) . 'includes/face2-post-type.php';
  * then kicking off the plugin from this point in the file does
  * not affect the page life cycle.
  *
+ * Run Face2 Widget
  * @since    1.0.0
- */
-/** 
- * Register all actions and filters for the plugin
  * @link https://oktium.com
  * @since 1.0.0
  * @package Face2_Widget 
- * @subpackage Face2_Widget/includes
-*/
-/** 
- *  Register all actions and filters for the plugin.
- * Maintain a list of all hooks that are registered throughout 
- * the plugin, and register them with the WordPress API. 
- * Call the run function to execute the list of actions and filters.
- * @package Face2_Widget
- * @subpackage Face2_Widget/includes 
- * @author Oktium
+ * @subpackage Face2_Widget
 */
 function run_face2_widget() {
 
