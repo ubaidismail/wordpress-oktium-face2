@@ -330,6 +330,7 @@ function wof_create_button_shortcode($atts){
 // enqueue content in footer
 add_action( 'wp_head' , 'wof_redner_btn', 999 );
 function wof_redner_btn($atts){
+    $check_is_url_set = 'global';
 
     $get_content_query = new WP_Query( array(
         'post_type' => 'face2buttons',
@@ -340,11 +341,21 @@ function wof_redner_btn($atts){
         $get_url_input = rwmb_meta( 'URL_page' , [] , $post->ID);
         $end = array_slice(explode('/', rtrim($get_url_input, '/')), -1)[0];
         if($get_btn_type === 'float' && !empty($end)){
+            $check_is_url_set = $end;
             if(is_page($end)){
+                
                 echo wof_create_button_shortcode(['id' => $post->ID]);
+                
             }
         }else if($get_btn_type === 'float' && empty($end)){
-            echo wof_create_button_shortcode(['id' => $post->ID]);
+            if($check_is_url_set === 'global' && is_page($end)){
+
+            }else{
+                echo wof_create_button_shortcode(['id' => $post->ID]);
+            }
+            
+                
+            
         }
     }
 }
