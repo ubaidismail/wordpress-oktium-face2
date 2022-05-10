@@ -330,7 +330,7 @@ function wof_create_button_shortcode($atts){
 // enqueue content in footer
 add_action( 'wp_head' , 'wof_redner_btn', 999 );
 function wof_redner_btn($atts){
-    $check_is_url_set = 'global';
+    $check_is_url_set = '';
 
     $get_content_query = new WP_Query( array(
         'post_type' => 'face2buttons',
@@ -340,25 +340,26 @@ function wof_redner_btn($atts){
         $get_btn_type = rwmb_meta( 'button_type' , [] , $post->ID);
         $get_url_input = rwmb_meta( 'URL_page' , [] , $post->ID);
         $end = array_slice(explode('/', rtrim($get_url_input, '/')), -1)[0];
-        if($get_btn_type === 'float' && !empty($end)){
-            $check_is_url_set = $end;
-            if(is_page($end)){
-                
-                echo wof_create_button_shortcode(['id' => $post->ID]);
-                
-            }
-        }else if($get_btn_type === 'float' && empty($end)){
-            if($check_is_url_set === 'global' && is_page($end)){
-
+		
+			if($get_btn_type === 'float'){
+            
+            if(!empty($end)){
+                if(is_page($end)){
+					$check_is_url_set = 'page_has_seperate_btn';
+                    echo wof_create_button_shortcode(['id' => $post->ID]);
+                }
             }else{
-                echo wof_create_button_shortcode(['id' => $post->ID]);
-            }
-            
-                
-            
+				if($check_is_url_set == 'page_has_seperate_btn'){
+				   
+				}else{
+					echo wof_create_button_shortcode(['id' => $post->ID]);	
+				}
+			}
         }
+        
     }
 }
+
 /** 
  * @since     1.0.0
  * @link https://oktium.com
